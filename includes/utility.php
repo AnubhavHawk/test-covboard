@@ -1,6 +1,6 @@
 <?php
 	function baseurl()
 	{
-		return "http://localhost/covboard";
+		return "https://covboard.herokuapp.com";
 	}
 ?>	
