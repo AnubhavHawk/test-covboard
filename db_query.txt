@@ -1,0 +1,42 @@
+// for usesrs also
+
+
+CREATE TABLE Porject(
+    project_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    project_name varchar(255) NOT NULL,
+	project_code varchar(255),
+    project_password varchar(255) NOT NULL,
+    project_deadline DATETIME,
+    project_description TEXT
+)ENGINE=INNODB;
+
+CREATE TABLE project_assign(
+    p_assign_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    project_id INT, 
+    user_id INT,
+    FOREIGN KEY (project_id) REFERENCES porject(project_id) ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE task(
+    task_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    task_name varchar(255) NOT NULL,
+    task_description TEXT,
+    task_progress INT DEFAULT 0
+)ENGINE=INNODB;
+
+CREATE TABLE project_task_list(
+	list_id INT PRIMARY KEY AUTO_INCREMENT, 
+    project_id Int, 
+    task_id int, 
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON UPDATE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES task(task_id) ON UPDATE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE directories(
+    d_id int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    d_name varchar(255),
+    project_id int,
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON UPDATE CASCADE
+    
+)ENGINE=INNODB;

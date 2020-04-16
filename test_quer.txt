@@ -1,0 +1,12 @@
+SELECT * FROM project p INNER JOIN project_assign p_a ON p.project_id = p_a.project_id INNER JOIN users u ON u.user_id = p_a.user_id INNER JOIN task t ON t.task_id = p_t_l.task_id 
+
+SELECT * FROM project_task_list p_t_l, project p INNER JOIN project_assign p_a ON p.project_id = p_a.project_id INNER JOIN users u ON u.user_id = p_a.user_id INNER JOIN task t ON t.task_id = p_t_l.task_id WHERE p.project_id = 1
+
+SELECT * FROM project_task_list p_t_l INNER JOIN project p ON p_t_l.project_id = p.project_id INNER JOIN project_assign p_a ON p.project_id = p_a.project_id INNER JOIN users u ON u.user_id = p_a.user_id INNER JOIN task t ON t.task_id = p_t_l.task_id WHERE p.project_id = 1
+
+
+SELECT * FROM project p INNER JOIN project_assign p_a ON p.project_id = p_a.project_id INNER JOIN users u ON u.user_id = p_a.user_id WHERE p.project_id = 1;
+
+
+// works pretty well
+EXPLAIN SELECT * FROM project p INNER JOIN project_assign p_a ON p.project_id = p_a.project_id INNER JOIN users u ON u.user_id = p_a.user_id INNER JOIN project_task_list p_t_l ON p_t_l.project_id = p.project_id INNER JOIN task t ON t.task_id = p_t_l.task_id WHERE p.project_id = 1
